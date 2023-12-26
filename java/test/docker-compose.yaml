@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15.4
+    volumes:
+      - .volumes/pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: pet
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+
+  application:
+    build: .
+    container_name: pet_java
+    environment:
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres/pet
+    depends_on:
+      postgres:
+        condition: service_started
+    ports:
+      - "8080:8080"
+    restart: always

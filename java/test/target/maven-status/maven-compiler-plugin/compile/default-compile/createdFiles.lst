@@ -1,0 +1,5 @@
+ru\isshepelev\test\controller\UserController.class
+ru\isshepelev\test\domain\User.class
+ru\isshepelev\test\TestApplication.class
+ru\isshepelev\test\repository\UserRepository.class
+ru\isshepelev\test\service\UserService.class

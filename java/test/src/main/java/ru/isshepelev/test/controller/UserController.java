@@ -1,14 +1,12 @@
 package ru.isshepelev.test.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.isshepelev.test.domain.User;
 import ru.isshepelev.test.service.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,6 +20,11 @@ public class UserController {
     @GetMapping("/users")
     public List<User> getUsers(){
         return userService.getUsers();
+    }
+
+    @GetMapping("/user/{id}")
+    public Optional<User> getUser(@PathVariable Long id){
+        return userService.findByUser(id);
     }
 }
 

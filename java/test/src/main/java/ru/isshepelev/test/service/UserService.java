@@ -6,6 +6,7 @@ import ru.isshepelev.test.domain.User;
 import ru.isshepelev.test.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,5 +20,9 @@ public class UserService {
 
     public List<User> getUsers() {
         return userRepository.findAll();
+    }
+
+    public Optional<User> findByUser(Long id) {
+        return userRepository.findById(id);
     }
 }
